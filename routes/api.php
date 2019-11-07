@@ -2,9 +2,9 @@
 
 header('Access-Control-Allow-Origin: *'); 
 header("Access-Control-Allow-Credentials: true");
-header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Max-Age: 1000');
-header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+header('Access-Control-Allow-Headers: Authorization,Origin, Content-Type, X-Auth-Token, X-XSRF-TOKEN');
 
 
 Route::group([
