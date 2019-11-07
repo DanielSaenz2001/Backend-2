@@ -2,7 +2,7 @@
 
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Authorization,Origin, Content-Type, X-Auth-Token, X-XSRF-TOKEN');
-header('Access-Control-Allow-Origin : *');
+
 Route::group([
     
     'middleware' => 'api',
