@@ -50,7 +50,7 @@ class PersonaController extends Controller
     {
         $result = User::join('personas', 'personaid', '=', 'personas.id')
         ->join('paises', 'personas.pais', '=', 'paises.id')
-        ->join('departamentos', 'personas.departamento', '=', 'departamentos.id')->where('personaid','=',auth()->user()->id)
+        ->join('departamentos', 'personas.departamento', '=', 'departamentos.id')->where('personaid','=','personas.id')
         ->select('users.name as usuario','users.avatar','personas.nombre','personas.ap_materno','users.role',
         'personas.ap_paterno','personas.celular', 'paises.nombre as pais',
         'personas.email','personas.fec_nacimiento','personas.est_civil','personas.domicilio_actual','personas.sexo'
