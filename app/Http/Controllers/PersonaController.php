@@ -52,7 +52,7 @@ class PersonaController extends Controller
         ->join('paises', 'personas.pais', '=', 'paises.id')
         ->join('departamentos', 'personas.departamento', '=', 'departamentos.id')->where('personaid','=',auth()->user()->id)
         ->select('users.name as usuario','users.avatar','personas.nombre','personas.ap_materno','users.role',
-        'personas.ap_paterno','personas.dni','personas.celular','personas.dni', 'paises.nombre as pais',
+        'personas.ap_paterno','personas.celular', 'paises.nombre as pais',
         'personas.email','personas.fec_nacimiento','personas.est_civil','personas.domicilio_actual','personas.sexo'
         ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID','users.id as user_ID')
         ->get();
@@ -61,7 +61,7 @@ class PersonaController extends Controller
     public function PersonasNull(){
         $resultado = Persona::join('paises', 'personas.pais', '=', 'paises.id')
         ->join('departamentos', 'personas.departamento', '=', 'departamentos.id')->where([['personas.dependiente', '=', !null]])
-        ->select('personas.nombre','personas.ap_materno','personas.ap_paterno','personas.dni','personas.celular','personas.dni', 'paises.nombre as pais',
+        ->select('personas.nombre','personas.ap_materno','personas.ap_paterno','personas.celular', 'paises.nombre as pais',
         'personas.email','personas.fec_nacimiento','personas.est_civil','personas.domicilio_actual','personas.sexo'
         ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID')
         ->get();
