@@ -31,9 +31,7 @@ class PersonaController extends Controller
         $persona->domicilio_actual = $request->domicilio_actual;
         $persona->sexo = $request->sexo;
         $persona->dependiente = $request->dependiente;
-
         $persona->save();
-        return response()->json($persona->id);
     }
     public function show($id)
     {
