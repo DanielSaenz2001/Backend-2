@@ -23,7 +23,6 @@ class PersonaController extends Controller
         $persona->ap_paterno = $request->ap_paterno;
         $persona->ap_materno = $request->ap_materno;
         $persona->celular = $request->celular;
-        $persona->dni = $request->dni;
         $persona->pais = $request->pais;
         $persona->departamento = $request->departamento;
         $persona->email = $request->email;
@@ -34,7 +33,6 @@ class PersonaController extends Controller
         $persona->dependiente = $request->dependiente;
 
         $persona->save();
-        echo $persona->id;
         return response()->json($persona->id);
     }
     public function show($id)
