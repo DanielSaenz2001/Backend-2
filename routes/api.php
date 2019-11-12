@@ -39,6 +39,11 @@ Route::group([
     Route::put('departamentos/{id}', 'DepartamentoController@update');
     Route::delete('departamentos/{id}', 'DepartamentoController@destroy');
 
+    Route::get('provincias', 'ProvinciaController@index');
+    Route::post('provincias', 'ProvinciaController@create');
+    Route::put('provincias/{id}', 'ProvinciaController@update');
+    Route::delete('provincias/{id}', 'ProvinciaController@destroy');
+    
     Route::get('facultad', 'FacultadController@index');
     Route::get('facultad/{id}', 'FacultadController@show');
     Route::post('facultad', 'FacultadController@create');
