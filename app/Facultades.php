@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Facultad extends Model
+class Facultades extends Model
 {
     public $timestamps = false;
     protected $guarded = ["id"];

@@ -2,33 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\EscuelaProfecional;
+use App\EscuelaProfecionales;
 use Illuminate\Http\Request;
 
 class EscuelaProfecionalController extends Controller
 {
     public function index()
     {
-        $escuela_profesional = EscuelaProfecional::all(); 
+        $escuela_profesional = EscuelaProfecionales::all(); 
         return response()->json($escuela_profesional);
     }
 
     public function create(Request $request)
     {
-        EscuelaProfecional::create($request-> all());
+        EscuelaProfecionales::create($request-> all());
         return response()->json(['success'=> true]);
     }
     public function show($id)
     {
-        $escuela_profesional= EscuelaProfecional::find($id);
+        $escuela_profesional= EscuelaProfecionales::find($id);
         return response()->json($escuela_profesional);
     }
     public function update(Request $request, $id)
     {
-        EscuelaProfecional::findOrFail($id)->update($request->all());
+        EscuelaProfecionales::findOrFail($id)->update($request->all());
     }
     public function destroy($id)
     {
-        EscuelaProfecional::findOrFail($id)->delete();
+        EscuelaProfecionales::findOrFail($id)->delete();
     }
 }
