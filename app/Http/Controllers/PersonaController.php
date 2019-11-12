@@ -23,8 +23,7 @@ class PersonaController extends Controller
         $persona->ap_paterno = $request->ap_paterno;
         $persona->ap_materno = $request->ap_materno;
         $persona->celular = $request->celular;
-        $persona->pais = $request->pais;
-        $persona->departamento = $request->departamento;
+        $persona->provincia = $request->provincia;
         $persona->email = $request->email;
         $persona->fec_nacimiento = $request->fec_nacimiento;
         $persona->est_civil = $request->est_civil;
@@ -49,8 +48,12 @@ class PersonaController extends Controller
     public function me()
     {
         $result = User::join('personas', 'personaid', '=', 'personas.id')
-        ->join('paises', 'personas.pais', '=', 'paises.id')
-        ->join('departamentos', 'personas.departamento', '=', 'departamentos.id')->where('users.id','=',auth()->user()->id)
+        ->join('provincias', 'personas.provincia', '=', 'provincias.id')
+        ->join('departamentos', 'provincias.dep_id', '=', 'departamentos.id')
+        ->join('paises', 'departamentos.pais_id', '=', 'paises.id')
+        
+        
+        ->where('users.id','=',auth()->user()->id)
         ->select('users.name as usuario','users.avatar','personas.nombre','personas.ap_materno','users.rol',
         'personas.ap_paterno','personas.celular', 'paises.nombre as pais',
         'personas.email','personas.fec_nacimiento','personas.est_civil','personas.domicilio_actual','personas.sexo'
