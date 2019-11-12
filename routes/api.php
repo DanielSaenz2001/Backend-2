@@ -40,6 +40,7 @@ Route::group([
     Route::delete('departamentos/{id}', 'DepartamentoController@destroy');
 
     Route::get('facultad', 'FacultadController@index');
+    Route::get('facultad/{id}', 'FacultadController@show');
     Route::post('facultad', 'FacultadController@create');
     Route::put('facultad/{id}', 'FacultadController@update');
     Route::delete('facultad/{id}', 'FacultadController@destroy');
