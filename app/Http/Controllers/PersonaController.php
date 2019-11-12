@@ -57,7 +57,7 @@ class PersonaController extends Controller
         ->select('users.name as usuario','users.avatar','personas.nombre','personas.ap_materno','users.rol',
         'personas.ap_paterno','personas.celular', 'paises.nombre as pais',
         'personas.email','personas.fec_nacimiento','personas.est_civil','personas.domicilio_actual','personas.sexo'
-        ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID','users.id as user_ID')
+        ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID','users.id as user_ID','provincias.nombre as provincia')
         ->get();
         return response()->json($result);
     }
