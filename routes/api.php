@@ -38,4 +38,19 @@ Route::group([
     Route::post('departamentos', 'DepartamentoController@create');
     Route::put('departamentos/{id}', 'DepartamentoController@update');
     Route::delete('departamentos/{id}', 'DepartamentoController@destroy');
+
+    Route::get('facultad', 'FacultadController@index');
+    Route::post('facultad', 'FacultadController@create');
+    Route::put('facultad/{id}', 'FacultadController@update');
+    Route::delete('facultad/{id}', 'FacultadController@destroy');
+
+    Route::get('escuela', 'EscuelaProfecionalController@index');
+    Route::post('escuela', 'EscuelaProfecionalController@create');
+    Route::put('escuela/{id}', 'EscuelaProfecionalController@update');
+    Route::delete('escuela/{id}', 'EscuelaProfecionalController@destroy');
+
+    Route::get('especialidad', 'EpEspecialidadController@index');
+    Route::post('especialidad', 'EpEspecialidadController@create');
+    Route::put('especialidad/{id}', 'EpEspecialidadController@update');
+    Route::delete('especialidad/{id}', 'EpEspecialidadController@destroy');
 });
