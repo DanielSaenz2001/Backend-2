@@ -30,16 +30,19 @@ Route::group([
     Route::delete('persona/{id}', 'PersonaController@destroy');
 
     Route::get('paises', 'PaisController@index');
+    Route::get('paises/{id}', 'PaisController@show');
     Route::post('paises', 'PaisController@create');
     Route::put('paises/{id}', 'PaisController@update');
     Route::delete('paises/{id}', 'PaisController@destroy');
 
     Route::get('departamentos', 'DepartamentoController@index');
+    Route::get('departamentos/{id}', 'DepartamentoController@show');
     Route::post('departamentos', 'DepartamentoController@create');
     Route::put('departamentos/{id}', 'DepartamentoController@update');
     Route::delete('departamentos/{id}', 'DepartamentoController@destroy');
 
     Route::get('provincias', 'ProvinciaController@index');
+    Route::get('facultad/{id}', 'FacultadController@show');
     Route::post('provincias', 'ProvinciaController@create');
     Route::put('provincias/{id}', 'ProvinciaController@update');
     Route::delete('provincias/{id}', 'ProvinciaController@destroy');
@@ -51,11 +54,13 @@ Route::group([
     Route::delete('facultad/{id}', 'FacultadController@destroy');
 
     Route::get('escuela', 'EscuelaProfecionalController@index');
+    Route::get('escuela/{id}', 'EscuelaProfecionalController@show');
     Route::post('escuela', 'EscuelaProfecionalController@create');
     Route::put('escuela/{id}', 'EscuelaProfecionalController@update');
     Route::delete('escuela/{id}', 'EscuelaProfecionalController@destroy');
 
     Route::get('especialidad', 'EpEspecialidadController@index');
+    Route::get('especialidad/{id}', 'EpEspecialidadController@show');
     Route::post('especialidad', 'EpEspecialidadController@create');
     Route::put('especialidad/{id}', 'EpEspecialidadController@update');
     Route::delete('especialidad/{id}', 'EpEspecialidadController@destroy');
