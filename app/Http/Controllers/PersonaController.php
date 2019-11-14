@@ -104,7 +104,6 @@ class PersonaController extends Controller
       } 
       else
       {
-            return response()->json(["message" => "Select image first."]);
             return response()->json($request->$id);
       }
     }
