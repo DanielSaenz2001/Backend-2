@@ -81,7 +81,7 @@ class PersonaController extends Controller
         $users = User::findOrFail($request->id);
         $users->avatar = $name;
         $users->save();
-        return response()->json($users);
+        return response()->$name;
 
       } 
       else
