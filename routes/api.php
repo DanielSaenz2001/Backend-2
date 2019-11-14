@@ -59,5 +59,5 @@ Route::group([
     Route::delete('especialidad/{id}', 'EpEspecialidadController@destroy');
     //---------------------/API-UNIVERSIDAD----------------------\\
 
-    Route::get('image', 'PersonaController@upload');
+    Route::post('image', 'PersonaController@upload');
 });
