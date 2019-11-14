@@ -93,7 +93,7 @@ class PersonaController extends Controller
         
         $file = $request->file('image');
         $name = time().$file->getClientOriginalName();
-        return $name;
+        return response()->$name;
 
       } 
       else
