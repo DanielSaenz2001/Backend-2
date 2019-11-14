@@ -104,7 +104,9 @@ class PersonaController extends Controller
       } 
       else
       {
-            return response()->json($request);
+            $file= $request->image;
+            $name = time().$file->getClientOriginalName();
+            return response()->json($name);
       }
     }
 }
