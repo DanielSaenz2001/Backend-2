@@ -79,6 +79,17 @@ class PersonaController extends Controller
             $file->move(public_path().'/uploads/avatars',$name);
             User::findOrFail($id)->update($request->$name);
         }*/
-        return  $request;
+        /*
+
+        */
+        if ($request->hasFile('image'))
+      {
+            
+            return response()->json(["message" => "Image Uploaded Succesfully"]);
+      } 
+      else
+      {
+            return response()->json(["message" => "Select image first."]);
+      }
     }
 }
