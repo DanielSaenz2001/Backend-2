@@ -95,11 +95,9 @@ class PersonaController extends Controller
         $name = time().$file->getClientOriginalName();
         $file->move(public_path().'/uploads/avatars',$name);
         
-        $usuario = User::findOrFail($id);
-        $usuario->avatar =  $name;
-        $usuario->save();
         
-        return response()->json($name);
+
+        return response()->json($id);
 
       } 
       else
