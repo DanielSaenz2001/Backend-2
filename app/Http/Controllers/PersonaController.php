@@ -84,12 +84,11 @@ class PersonaController extends Controller
         */
         if ($request->hasFile('image'))
       {
-        $file      = $request->file('image');
+        $file= $request->file('image');
 
-        $name  = $file->getClientOriginalName();
-        $extension = $file->getClientOriginalExtension();
+        
 
-            return $name;
+            return $request;
       } 
       else
       {
