@@ -91,10 +91,9 @@ class PersonaController extends Controller
         $file= $request->file('image');
 
         
-        $file      = $request->file('image');
+        $file = $request->file('image');
         $name = time().$file->getClientOriginalName();
-        $file->move(public_path().'/uploads/avatars',$name);
-        return $request->hasFile('image');
+        return $name;
 
       } 
       else
