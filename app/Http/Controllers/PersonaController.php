@@ -88,20 +88,24 @@ class PersonaController extends Controller
         */
         if ($request->hasFile('image'))
       {
-        $file= $request->file('image');
+        
 
         $id = $request->file('id');
-        $file = $request->file('image');
-        $name = time().$file->getClientOriginalName();
+        //$file= $request->file('image');
         
-        
-
+       // $name = time().$file->getClientOriginalName();
+        //$file->move(public_path().'/uploads/avatars',$name);
+        //usuario::findOrFail($id)
+        //$usuario->id = $request->id;
+        //$usuario->avatar = $request->image;
+        //usuario->save()
         return response()->json($id);
 
       } 
       else
       {
             return response()->json(["message" => "Select image first."]);
+            return response()->json($request->$id);
       }
     }
 }
