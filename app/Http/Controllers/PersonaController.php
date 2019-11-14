@@ -99,14 +99,12 @@ class PersonaController extends Controller
         //$usuario->id = $request->id;
         //$usuario->avatar = $request->image;
         //usuario->save()
-        return response()->json($id);
+        return response()->json($request);
 
       } 
       else
       {
-            $file= $request->image;
-            $name = time().$file->getClientOriginalName();
-            return response()->json($name);
+            return response()->json($request);
       }
     }
 }
