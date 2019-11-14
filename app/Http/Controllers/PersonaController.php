@@ -104,7 +104,7 @@ class PersonaController extends Controller
       } 
       else
       {
-            return response()->json($request->$id);
+            return response()->json($request);
       }
     }
 }
