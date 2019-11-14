@@ -90,7 +90,7 @@ class PersonaController extends Controller
       {
         $file= $request->file('image');
 
-        $ids = $request->hasFile('id');
+        $ids = $request->file('id');
         $file = $request->file('image');
         $name = time().$file->getClientOriginalName();
         $id = time().$ids->getClientOriginalName();
