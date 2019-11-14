@@ -78,6 +78,10 @@ class PersonaController extends Controller
             $name = time().$file->getClientOriginalName();
             $file->move(public_path().'/uploads/avatars',$name);
             User::findOrFail($id)->update($request->$name);
+
+            $name  = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $file->move(public_path().'/uploads/avatars',$name);
         }*/
         /*
 
@@ -88,7 +92,7 @@ class PersonaController extends Controller
 
         
 
-            return $request;
+            return $file;
       } 
       else
       {
