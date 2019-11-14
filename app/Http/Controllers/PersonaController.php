@@ -62,8 +62,10 @@ class PersonaController extends Controller
         return response()->json($result);
     }
     public function PersonasNull(){
-        $resultado = Persona::join('paises', 'personas.pais', '=', 'paises.id')
-        ->join('departamentos', 'personas.departamento', '=', 'departamentos.id')->where([['personas.dependiente', '=', !null]])
+        $resultado = Persona::join('paises', 'departamentos.pais_id', '=', 'paises.id')
+        ->join('departamentos', 'provincias.dep_id', '=', 'departamentos.id')
+        ->join('provincias', 'personas.provincia', '=', 'provincias.id')
+        ->where([['personas.dependiente', '=', !null]])
         ->select('personas.nombre','personas.ap_materno','personas.ap_paterno','personas.celular', 'paises.nombre as pais',
         'personas.email','personas.fec_nacimiento','personas.est_civil','personas.domicilio_actual','personas.sexo'
         ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID')
@@ -79,9 +81,9 @@ class PersonaController extends Controller
         $name = time().$file->getClientOriginalName();
         $file->move(public_path().'/uploads/avatars',$name);
         $users = User::findOrFail($request->id);
-        $users->avatar = $name;
+        $users->avatar = json($name);
         $users->save();
-        return response()->$name;
+        return response()->json($name);
 
       } 
       else
