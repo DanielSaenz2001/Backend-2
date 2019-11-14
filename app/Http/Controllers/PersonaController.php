@@ -90,7 +90,7 @@ class PersonaController extends Controller
       {
         
 
-        $id = $request->file('id');
+        
         //$file= $request->file('image');
         
        // $name = time().$file->getClientOriginalName();
@@ -104,7 +104,7 @@ class PersonaController extends Controller
       } 
       else
       {
-            return response()->json($request);
+            return response()->json($request->id);
       }
     }
 }
