@@ -84,8 +84,12 @@ class PersonaController extends Controller
         */
         if ($request->hasFile('image'))
       {
-            
-            return response()->json(["message" => "Image Uploaded Succesfully"]);
+        $file      = $request->file('image');
+
+        $name  = $file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
+
+            return $name;
       } 
       else
       {
