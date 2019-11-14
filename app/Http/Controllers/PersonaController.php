@@ -71,4 +71,14 @@ class PersonaController extends Controller
 
         return response()->json($resultado);     
     }
+    public function upload(Request $request){
+
+        /*if($request->avatar){
+            $file = $request->avatar;
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/uploads/avatars',$name);
+            User::findOrFail($id)->update($request->$name);
+        }*/
+        return  $request;
+    }
 }

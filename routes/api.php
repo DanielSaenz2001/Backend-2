@@ -12,7 +12,7 @@ Route::group([
     'middleware' => 'api',
 
 ], function () {
-
+    //-----------------------API-JWT------------------------\\
     Route::post('login', 'AuthController@login');
     Route::post('signup', 'AuthController@signup');
     Route::post('logout', 'AuthController@logout');
@@ -20,33 +20,26 @@ Route::group([
     
     Route::post('sendPasswordResetLink', 'ResetPasswordController@sendEmail');
     Route::post('resetPassword', 'ChangePasswordController@process');
+    //-----------------------/API-JWT------------------------\\
 
+    //---------------------API-PERSONA----------------------\\
+    Route::get('users', 'PersonaController@PersonasNull');
     Route::get('usuario', 'PersonaController@me');
     Route::get('persona', 'PersonaController@index');
     Route::get('persona/{id}','PersonaController@show');
-    Route::get('users', 'PersonaController@PersonasNull');
+    
     Route::post('persona', 'PersonaController@create');
     Route::put('persona/{id}', 'PersonaController@update');
     Route::delete('persona/{id}', 'PersonaController@destroy');
+    //---------------------/API-PERSONA----------------------\\
 
-    Route::get('paises', 'PaisController@index');
-    Route::get('paises/{id}', 'PaisController@show');
-    Route::post('paises', 'PaisController@create');
-    Route::put('paises/{id}', 'PaisController@update');
-    Route::delete('paises/{id}', 'PaisController@destroy');
+    //-----------------------API-PAISES------------------------\\
+    Route::get('paises', 'PaisController@paises');
+    Route::get('departamentos', 'PaisController@provincias');
+    Route::get('provincias', 'PaisController@departamentos');
+    //-----------------------/API-PAISES------------------------\\
 
-    Route::get('departamentos', 'DepartamentoController@index');
-    Route::get('departamentos/{id}', 'DepartamentoController@show');
-    Route::post('departamentos', 'DepartamentoController@create');
-    Route::put('departamentos/{id}', 'DepartamentoController@update');
-    Route::delete('departamentos/{id}', 'DepartamentoController@destroy');
-
-    Route::get('provincias', 'ProvinciaController@index');
-    Route::get('facultad/{id}', 'FacultadController@show');
-    Route::post('provincias', 'ProvinciaController@create');
-    Route::put('provincias/{id}', 'ProvinciaController@update');
-    Route::delete('provincias/{id}', 'ProvinciaController@destroy');
-    
+    //---------------------API-UNIVERSIDAD----------------------\\
     Route::get('facultad', 'FacultadController@index');
     Route::get('facultad/{id}', 'FacultadController@show');
     Route::post('facultad', 'FacultadController@create');
@@ -64,4 +57,7 @@ Route::group([
     Route::post('especialidad', 'EpEspecialidadController@create');
     Route::put('especialidad/{id}', 'EpEspecialidadController@update');
     Route::delete('especialidad/{id}', 'EpEspecialidadController@destroy');
+    //---------------------/API-UNIVERSIDAD----------------------\\
+
+    Route::put('image', 'PersonaController@upload');
 });

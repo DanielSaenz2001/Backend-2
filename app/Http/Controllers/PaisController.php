@@ -3,32 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Paises;
-use Illuminate\Http\Request;
+use App\Departamentos;
+use App\Provincia;
 
 class PaisController extends Controller
 {
-    public function index()
+    public function paises()
     {
         $paises = Paises::all(); 
         return response()->json($paises);
     }
-
-    public function create(Request $request)
+    public function provincias()
     {
-        Paises::create($request-> all());
-        return response()->json(['success'=> true]);
+        $provincias = Provincia::all(); 
+        return response()->json($provincias);
     }
-    public function show($id)
+    public function departamentos()
     {
-        $paises= Paises::find($id);
-        return response()->json($paises);
-    }
-    public function update(Request $request, $id)
-    {
-        Paises::findOrFail($id)->update($request->all());
-    }
-    public function destroy($id)
-    {
-        Paises::findOrFail($id)->delete();
+        $departamentos = Departamentos::all(); 
+        return response()->json($departamentos);
     }
 }
