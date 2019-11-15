@@ -7,79 +7,40 @@ use Illuminate\Http\Request;
 
 class EventosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $evento = Eventos::all(); 
+        return response()->json($evento);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $evento = new Eventos();
+        $evento->id = $request->id;
+        $evento->nombre = $request->nombre;
+        $evento->ap_paterno = $request->ap_paterno;
+        $evento->ap_materno = $request->ap_materno;
+        $evento->celular = $request->celular;
+        $evento->provincia = $request->provincia;
+        $evento->email = $request->email;
+        $evento->fec_nacimiento = $request->fec_nacimiento;
+        $evento->est_civil = $request->est_civil;
+        $evento->domicilio_actual = $request->domicilio_actual;
+        $evento->sexo = $request->sexo;
+        $evento->dependiente = $request->dependiente;
+        $evento->save();
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function show($id)
     {
-        //
+        $evento= Eventos::find($id);
+        return response()->json($evento);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Eventos  $eventos
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Eventos $eventos)
+    public function update(Request $request, $id)
     {
-        //
+        Eventos::findOrFail($id)->update($request->all());
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Eventos  $eventos
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Eventos $eventos)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Eventos  $eventos
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Eventos $eventos)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Eventos  $eventos
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Eventos $eventos)
-    {
-        //
+        Eventos::findOrFail($id)->delete();
     }
 }
