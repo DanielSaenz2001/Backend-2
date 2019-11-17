@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Paises extends Model
+class Provincia extends Model
 {
     public $timestamps = false;
     protected $guarded = ["id"];
 }
+

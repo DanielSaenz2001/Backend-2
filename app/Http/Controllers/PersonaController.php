@@ -22,12 +22,10 @@ class PersonaController extends Controller
         $persona->nombre = $request->nombre;
         $persona->ap_paterno = $request->ap_paterno;
         $persona->ap_materno = $request->ap_materno;
-        $persona->celular = $request->celular;
         $persona->provincia = $request->provincia;
         $persona->email = $request->email;
         $persona->fec_nacimiento = $request->fec_nacimiento;
         $persona->est_civil = $request->est_civil;
-        $persona->domicilio_actual = $request->domicilio_actual;
         $persona->sexo = $request->sexo;
         $persona->dependiente = $request->dependiente;
         $persona->save();
@@ -55,8 +53,8 @@ class PersonaController extends Controller
         
         ->where('users.id','=',auth()->user()->id)
         ->select('users.name as usuario','users.avatar','personas.nombre','personas.ap_materno','users.rol',
-        'personas.ap_paterno','personas.celular', 'paises.nombre as pais',
-        'personas.email','personas.fec_nacimiento','personas.est_civil','personas.domicilio_actual','personas.sexo'
+        'personas.ap_paterno', 'paises.nombre as pais',
+        'personas.email','personas.fec_nacimiento','personas.est_civil','personas.sexo'
         ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID','users.id as user_ID','provincias.nombre as provincia')
         ->get();
         return response()->json($result);

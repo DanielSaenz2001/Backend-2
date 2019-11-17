@@ -35,8 +35,9 @@ Route::group([
 
     //-----------------------API-PAISES------------------------\\
     Route::get('paises', 'PaisController@paises');
-    Route::get('departamentos', 'PaisController@provincias');
-    Route::get('provincias', 'PaisController@departamentos');
+    Route::get('departamentos', 'PaisController@departamentos');
+    Route::get('provincias', 'PaisController@provincias');
+    Route::get('lugares', 'PaisController@lugares');
     //-----------------------/API-PAISES------------------------\\
 
     //---------------------API-UNIVERSIDAD----------------------\\
@@ -60,4 +61,5 @@ Route::group([
     //---------------------/API-UNIVERSIDAD----------------------\\
 
     Route::post('image', 'PersonaController@upload');
+    Route::post('eventos', 'EventosController@create');
 });

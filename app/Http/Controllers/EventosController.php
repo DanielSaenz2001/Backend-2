@@ -15,19 +15,19 @@ class EventosController extends Controller
 
     public function create(Request $request)
     {
+        
+        
+        $file= $request->file('imagen'); 
+        $name = time().$file->getClientOriginalName();
+        $file->move(public_path().'/uploads/eventos',$name);
         $evento = new Eventos();
         $evento->id = $request->id;
         $evento->nombre = $request->nombre;
-        $evento->ap_paterno = $request->ap_paterno;
-        $evento->ap_materno = $request->ap_materno;
-        $evento->celular = $request->celular;
-        $evento->provincia = $request->provincia;
-        $evento->email = $request->email;
-        $evento->fec_nacimiento = $request->fec_nacimiento;
-        $evento->est_civil = $request->est_civil;
-        $evento->domicilio_actual = $request->domicilio_actual;
-        $evento->sexo = $request->sexo;
-        $evento->dependiente = $request->dependiente;
+        $evento->descripcion = $request->descripcion;
+        $evento->imagen = $name;
+        $evento->fec_fin = $request->fec_fin;
+        $evento->fec_inicio = $request->fec_inicio;
+        
         $evento->save();
     }
     public function show($id)
