@@ -27,17 +27,22 @@ class EventosController extends Controller
         $evento->imagen = $name;
         $evento->fec_fin = $request->fec_fin;
         $evento->fec_inicio = $request->fec_inicio;
-        
         $evento->save();
     }
     public function show($id)
     {
-        $evento= Eventos::find($id);
+        $evento= Eventos::findOrFail($id);
         return response()->json($evento);
     }
     public function update(Request $request, $id)
     {
-        Eventos::findOrFail($id)->update($request->all());
+        $evento = Eventos::findOrFail($id);
+        $evento->nombre = $request->nombre;
+        $evento->descripcion = $request->descripcion;
+        $evento->fec_fin = $request->fec_fin;
+        $evento->fec_inicio = $request->fec_inicio;;
+        $evento->save();
+        return response()->json($evento);
     }
     public function destroy($id)
     {

@@ -26,6 +26,7 @@ class FacultadController extends Controller
     public function update(Request $request, $id)
     {
         Facultades::findOrFail($id)->update($request->all());
+        return response()->json($request->all());
     }
     public function destroy($id)
     {

@@ -52,14 +52,15 @@ Route::group([
     Route::post('escuela', 'EscuelaProfecionalController@create');
     Route::put('escuela/{id}', 'EscuelaProfecionalController@update');
     Route::delete('escuela/{id}', 'EscuelaProfecionalController@destroy');
-
-    Route::get('especialidad', 'EpEspecialidadController@index');
-    Route::get('especialidad/{id}', 'EpEspecialidadController@show');
-    Route::post('especialidad', 'EpEspecialidadController@create');
-    Route::put('especialidad/{id}', 'EpEspecialidadController@update');
-    Route::delete('especialidad/{id}', 'EpEspecialidadController@destroy');
     //---------------------/API-UNIVERSIDAD----------------------\\
 
     Route::post('image', 'PersonaController@upload');
+    //---------------------/API-EVENTOS----------------------\\
+    
+    Route::get('eventos', 'EventosController@index');
+    Route::get('eventos/{id}', 'EventosController@show');
     Route::post('eventos', 'EventosController@create');
+    Route::put('eventos/{id}', 'EventosController@update');
+    Route::delete('eventos/{id}', 'EventosController@destroy');
+    //----------------------API-EVENTOS----------------------\\
 });

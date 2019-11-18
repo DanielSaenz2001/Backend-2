@@ -60,16 +60,21 @@ class PersonaController extends Controller
         return response()->json($result);
     }
     public function PersonasNull(){
-        $resultado = Persona::join('paises', 'departamentos.pais_id', '=', 'paises.id')
+        $result = User::join('personas', 'personaid', '=', 'personas.id')
+        ->where('users.id','=',auth()->user()->id)->first();
+ 
+         $resultado = Persona::join('provincias', 'personas.provincia', '=', 'provincias.id')
         ->join('departamentos', 'provincias.dep_id', '=', 'departamentos.id')
-        ->join('provincias', 'personas.provincia', '=', 'provincias.id')
-        ->where([['personas.dependiente', '=', !null]])
-        ->select('personas.nombre','personas.ap_materno','personas.ap_paterno','personas.celular', 'paises.nombre as pais',
-        'personas.email','personas.fec_nacimiento','personas.est_civil','personas.domicilio_actual','personas.sexo'
-        ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID')
+        ->join('paises', 'departamentos.pais_id', '=', 'paises.id')
+        ->where([['personas.dependiente','=',$result->id]])
+
+        ->select('personas.nombre','personas.ap_materno',
+        'personas.ap_paterno', 'paises.nombre as pais',
+        'personas.email','personas.fec_nacimiento','personas.est_civil','personas.sexo'
+        ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID','provincias.nombre as provincia')
         ->get();
 
-        return response()->json($resultado);     
+        return response()->json($resultado); 
     }
     public function upload(Request $request){
         if ($request->hasFile('image'))
