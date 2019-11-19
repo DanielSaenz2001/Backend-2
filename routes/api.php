@@ -63,4 +63,21 @@ Route::group([
     Route::put('eventos/{id}', 'EventosController@update');
     Route::delete('eventos/{id}', 'EventosController@destroy');
     //----------------------API-EVENTOS----------------------\\
+
+    //----------------------API-EMPRESAS----------------------\\
+    Route::get('empresas', 'EmpresasControler@index');
+    Route::get('empresas/{id}', 'EmpresasControler@show');
+    Route::post('empresas', 'EmpresasControler@create');
+    Route::put('empresas/{id}', 'EmpresasControler@update');
+    Route::delete('empresas/{id}', 'EmpresasControler@destroy');
+    //----------------------/API-EMPRESAS----------------------\\
+
+     //----------------------API-SUGERECIAS----------------------\\
+     Route::get('sugerencias', 'EmpresasControler@index');
+     Route::get('sugerencias/{id}', 'EmpresasControler@show');
+     Route::post('sugerencias', 'EmpresasControler@create');
+     Route::put('sugerencias/{id}', 'EmpresasControler@updateComentario');
+     //Route::put('sugerencias/{id}', 'EmpresasControler@updateAdmin');
+     Route::delete('sugerencias/{id}', 'EmpresasControler@destroy');
+      //----------------------/API-SUGERECIAS----------------------\\
 });
