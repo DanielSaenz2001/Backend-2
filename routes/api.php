@@ -73,11 +73,11 @@ Route::group([
     //----------------------/API-EMPRESAS----------------------\\
 
      //----------------------API-SUGERECIAS----------------------\\
-     Route::get('sugerencias', 'EmpresasControler@index');
-     Route::get('sugerencias/{id}', 'EmpresasControler@show');
-     Route::post('sugerencias', 'EmpresasControler@create');
-     Route::put('sugerencias/{id}', 'EmpresasControler@updateComentario');
-     //Route::put('sugerencias/{id}', 'EmpresasControler@updateAdmin');
-     Route::delete('sugerencias/{id}', 'EmpresasControler@destroy');
+     Route::get('sugerencias', 'SugerenciasControler@index');
+     Route::get('sugerencias/{id}', 'SugerenciasControler@show');
+     Route::post('sugerencias', 'SugerenciasControler@create');
+     Route::put('sugerencias/{id}', 'SugerenciasControler@updateComentario');
+     //Route::put('sugerencias/{id}', 'SugerenciasControler@updateAdmin');
+     Route::delete('sugerencias/{id}', 'SugerenciasControler@destroy');
       //----------------------/API-SUGERECIAS----------------------\\
 });
