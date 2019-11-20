@@ -18,17 +18,18 @@ class PersonaController extends Controller
     public function create(Request $request)
     {
         $persona = new Persona();
-        $persona->id = $request->id;
         $persona->nombre = $request->nombre;
         $persona->ap_paterno = $request->ap_paterno;
         $persona->ap_materno = $request->ap_materno;
         $persona->provincia = $request->provincia;
+        $persona->dni = $request->dni;
         $persona->email = $request->email;
         $persona->fec_nacimiento = $request->fec_nacimiento;
         $persona->est_civil = $request->est_civil;
         $persona->sexo = $request->sexo;
         $persona->dependiente = $request->dependiente;
         $persona->save();
+        return response()->json($persona);
     }
     public function show($id)
     {
@@ -38,6 +39,7 @@ class PersonaController extends Controller
     public function update(Request $request, $id)
     {
         persona::findOrFail($id)->update($request->all());
+        return response()->json($request->all());
     }
     public function destroy($id)
     {
@@ -55,7 +57,7 @@ class PersonaController extends Controller
         ->select('users.name as usuario','users.avatar','personas.nombre','personas.ap_materno','users.rol',
         'personas.ap_paterno', 'paises.nombre as pais',
         'personas.email','personas.fec_nacimiento','personas.est_civil','personas.sexo'
-        ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID','users.id as user_ID','provincias.nombre as provincia')
+        ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID','users.id as user_ID','provincias.nombre as provincia', 'personas.dni')
         ->get();
         return response()->json($result);
     }
