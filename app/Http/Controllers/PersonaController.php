@@ -58,7 +58,7 @@ class PersonaController extends Controller
         'personas.ap_paterno', 'paises.nombre as pais',
         'personas.email','personas.fec_nacimiento','personas.est_civil','personas.sexo','personas.activo'
         ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID','users.id as user_ID','provincias.nombre as provincia', 'personas.dni')
-        ->get();
+        ->first();
         return response()->json($result);
     }
     public function PersonasNull(){

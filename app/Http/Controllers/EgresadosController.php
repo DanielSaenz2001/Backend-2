@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use App\Egresados;
 use Illuminate\Http\Request;
 
@@ -40,5 +40,19 @@ class EgresadosController extends Controller
     public function destroy($id)
     {
         Egresados::findOrFail($id)->delete();
+    }
+    public function egresados(){
+       $result = User::join('personas', 'personaid', '=', 'personas.id')
+        ->join('egresados', 'egresados.persona_id', '=', 'personas.id')
+        ->join('provincias', 'personas.provincia', '=', 'provincias.id')
+        ->join('departamentos', 'provincias.dep_id', '=', 'departamentos.id')
+        ->join('paises', 'departamentos.pais_id', '=', 'paises.id')
+        ->where('users.id','=',auth()->user()->id)
+        ->select('users.name as usuario','users.avatar','personas.nombre','personas.ap_materno','users.rol',
+        'personas.ap_paterno', 'paises.nombre as pais',
+        'personas.email','personas.fec_nacimiento','personas.est_civil','personas.sexo','personas.activo'
+        ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID','users.id as user_ID','provincias.nombre as provincia', 'personas.dni')
+        ->get();
+        return response()->json($result);
     }
 }
