@@ -44,15 +44,16 @@ class EgresadosController extends Controller
     public function egresados(){
        $result = User::join('personas', 'personaid', '=', 'personas.id')
         ->join('egresados', 'egresados.persona_id', '=', 'personas.id')
-        ->join('provincias', 'personas.provincia', '=', 'provincias.id')
+        ->join('provincias', 'egresados.domicilio_actual', '=', 'provincias.id')
         ->join('departamentos', 'provincias.dep_id', '=', 'departamentos.id')
         ->join('paises', 'departamentos.pais_id', '=', 'paises.id')
         ->where('users.id','=',auth()->user()->id)
-        ->select('users.name as usuario','users.avatar','personas.nombre','personas.ap_materno','users.rol',
+        ->select('users.name as usuario','users.avatar','personas.nombre','personas.ap_materno',
         'personas.ap_paterno', 'paises.nombre as pais',
-        'personas.email','personas.fec_nacimiento','personas.est_civil','personas.sexo','personas.activo'
-        ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID','users.id as user_ID','provincias.nombre as provincia', 'personas.dni')
-        ->get();
+        'personas.email','personas.fec_nacimiento','personas.est_civil','personas.sexo'
+        ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID','users.id as user_ID','provincias.nombre as provincia', 'personas.dni'
+        ,'egresados.codigo','egresados.celular','egresados.id')
+        ->first();
         return response()->json($result);
     }
 }
