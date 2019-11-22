@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Empresas;
 use Illuminate\Http\Request;
 
-class EmpresasControler extends Controller
+class EmpresasController extends Controller
 {
     public function index()
     {

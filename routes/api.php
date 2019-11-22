@@ -65,11 +65,11 @@ Route::group([
     //----------------------API-EVENTOS----------------------\\
 
     //----------------------API-EMPRESAS----------------------\\
-    Route::get('empresas', 'EmpresasControler@index');
-    Route::get('empresas/{id}', 'EmpresasControler@show');
-    Route::post('empresas', 'EmpresasControler@create');
-    Route::put('empresas/{id}', 'EmpresasControler@update');
-    Route::delete('empresas/{id}', 'EmpresasControler@destroy');
+    Route::get('empresas', 'EmpresasController@index');
+    Route::get('empresas/{id}', 'EmpresasController@show');
+    Route::post('empresas', 'EmpresasController@create');
+    Route::put('empresas/{id}', 'EmpresasController@update');
+    Route::delete('empresas/{id}', 'EmpresasController@destroy');
     //----------------------/API-EMPRESAS----------------------\\
 
      //----------------------API-SUGERECIAS----------------------\\
