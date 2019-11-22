@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Capacitaciones;
 use Illuminate\Http\Request;
 
-class EventosController extends Controller
+class CapacitacionesController extends Controller
 {
     public function index()
     {
@@ -27,7 +27,8 @@ class EventosController extends Controller
         $capacitaciones->tipo = $request->tipo;
         $capacitaciones->precio = $request->precio;
         $capacitaciones->rutas = $request->rutas;
-       
+        $capacitaciones->egresado_id = $request->egresado_id;
+        $capacitaciones->empresa_id = $request->empresa_id;
         $capacitaciones->save();
         return response()->json($capacitaciones);
     }
@@ -48,6 +49,8 @@ class EventosController extends Controller
         $capacitaciones->tipo = $request->tipo;
         $capacitaciones->precio = $request->precio;
         $capacitaciones->rutas = $request->rutas;
+        $capacitaciones->egresado_id = $request->egresado_id;
+        $capacitaciones->empresa_id = $request->empresa_id;
         $capacitaciones->save();
         return response()->json($capacitaciones);
     }
