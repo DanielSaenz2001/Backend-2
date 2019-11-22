@@ -89,4 +89,12 @@ Route::group([
       Route::delete('egresados/{id}', 'EgresadosController@destroy');
       Route::get('egresadosdatos', 'EgresadosController@egresados');
       //----------------------/API-EGRESADOS----------------------\\
+
+      //----------------------API-CAPACITACIONES--------------------\\
+      Route::get('capacitaciones', 'CapacitacionesController@index');
+      Route::get('capacitaciones/{id}', 'CapacitacionesController@show');
+      Route::post('capacitaciones', 'CapacitacionesController@create');
+      Route::put('capacitaciones/{id}', 'CapacitacionesController@update');
+      Route::delete('capacitaciones/{id}', 'CapacitacionesController@destroy');
+      //----------------------API-CAPACITACIONES--------------------\\
 });
