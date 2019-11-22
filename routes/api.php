@@ -87,5 +87,6 @@ Route::group([
       Route::post('egresados', 'EgresadosController@create');
       Route::put('egresados/{id}', 'EgresadosController@update');
       Route::delete('egresados/{id}', 'EgresadosController@destroy');
+      Route::get('egresadosdatos', 'EgresadosController@egresados');
       //----------------------/API-EGRESADOS----------------------\\
 });
