@@ -9,15 +9,15 @@ class ExperienciasLaboralesController extends Controller
 {
     public function index(Request $request)
     {
-        /*$result = User::join('personas', 'personaid', '=', 'personas.id')
+        $result = User::join('personas', 'personaid', '=', 'personas.id')
         ->join('egresados', 'egresados.persona_id', '=', 'personas.id')
         ->join('experiencias_laborales', 'experiencias_laborales.egresado_id', '=', 'egresados.id')
         ->join('empresas', 'experiencias_laborales.empresa_id', '=', 'empresas.id')
         ->where('users.id','=',auth()->user()->id)
         ->select('experiencias_laborales.id','experiencias_laborales.validacion_fecha','experiencias_laborales.is_validando',
         'experiencias_laborales.descripcion_val','empresas.nombre as empresa')
-        ->get();*/
-        return response()->json($request);
+        ->get();
+        return response()->json($result);
     }
 
     public function create(Request $request)

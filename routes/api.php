@@ -124,4 +124,11 @@ Route::group([
        Route::delete('experiencias/{id}', 'ExperienciasLaboralesController@destroy');
        //----------------------API-Experiencia--------------------\\
 
+        //----------------------API-Datos-Experiencia--------------------\\
+        Route::get('history/{id}', 'DatosExperienciasLaboralesController@show');
+        Route::post('history', 'DatosExperienciasLaboralesController@create');
+        Route::put('history/{id}', 'DatosExperienciasLaboralesController@update');
+        Route::delete('history/{id}', 'DatosExperienciasLaboralesController@destroy');
+        //----------------------API-Datos-Experiencia--------------------\\
+
 });

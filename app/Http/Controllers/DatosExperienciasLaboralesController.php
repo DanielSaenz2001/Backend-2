@@ -7,19 +7,7 @@ use Illuminate\Http\Request;
 
 class DatosExperienciasLaboralesController extends Controller
 {
-    public function index()
-    {
-        $result = User::join('personas', 'personaid', '=', 'personas.id')
-        ->join('egresados', 'egresados.persona_id', '=', 'personas.id')
-        ->join('experiencias_laborales', 'experiencias_laborales.egresado_id', '=', 'egresados.id')
-        ->join('empresas', 'experiencias_laborales.empresa_id', '=', 'empresas.id')
-        ->where('users.id','=',auth()->user()->id)
-        ->select('experiencias_laborales.id','experiencias_laborales.validacion_fecha','experiencias_laborales.is_validando',
-        'experiencias_laborales.descripcion_val','empresas.nombre as empresa')
-        ->get();
-        return response()->json($result);
-    }
-
+    
     public function create(Request $request)
     {
         $datos = new DatosExperienciasLaborales();
@@ -34,8 +22,14 @@ class DatosExperienciasLaboralesController extends Controller
     }
     public function show($id)
     {
-        $exp= DatosExperienciasLaborales::find($id);
-        return response()->json($exp);
+ 
+        $result = DatosExperienciasLaborales::join('experiencias_laborales', 'experiencia_laboral_id', '=', 'experiencias_laborales.id')
+        ->where('experiencias_laborales.id','=',$id)
+        ->select('datos_experiencias_laborales.descripccion','datos_experiencias_laborales.estado',
+        'datos_experiencias_laborales.cargo',
+        'datos_experiencias_laborales.fech_inicio','datos_experiencias_laborales.fech_fin')
+        ->get();
+        return response()->json($result);
     }
     public function update(Request $request, $id)
     {
