@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use App\Capacitaciones;
 use Illuminate\Http\Request;
 
@@ -9,8 +9,15 @@ class CapacitacionesController extends Controller
 {
     public function index()
     {
-        $capacitaciones = Eventos::all(); 
-        return response()->json($capacitaciones);
+        $result = User::join('personas', 'personaid', '=', 'personas.id')
+        ->join('egresados', 'egresados.persona_id', '=', 'personas.id')
+        ->join('capacitaciones', 'capacitaciones.egresado_id', '=', 'egresados.id')
+        ->where('users.id','=',auth()->user()->id)
+        ->select('capacitaciones.id','capacitaciones.nombre','capacitaciones.informacion',
+        'capacitaciones.fecha_inicio','capacitaciones.fecha_fin','capacitaciones.direccion',
+        'capacitaciones.tipo','capacitaciones.precio','capacitaciones.rutas')
+        ->get();
+        return response()->json($result);
     }
 
     public function create(Request $request)
@@ -20,7 +27,6 @@ class CapacitacionesController extends Controller
         $capacitaciones = new Capacitaciones();
         $capacitaciones->nombre = $request->nombre;
         $capacitaciones->informacion = $request->informacion;
-        $capacitaciones->duracion = $request->duracion;
         $capacitaciones->fecha_inicio = $request->fecha_inicio;
         $capacitaciones->fecha_fin = $request->fecha_fin;
         $capacitaciones->direccion = $request->direccion;
@@ -42,7 +48,6 @@ class CapacitacionesController extends Controller
         $capacitaciones = Capacitaciones::findOrFail($id);
         $capacitaciones->nombre = $request->nombre;
         $capacitaciones->informacion = $request->informacion;
-        $capacitaciones->duracion = $request->duracion;
         $capacitaciones->fecha_inicio = $request->fecha_inicio;
         $capacitaciones->fecha_fin = $request->fecha_fin;
         $capacitaciones->direccion = $request->direccion;

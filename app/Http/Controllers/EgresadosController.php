@@ -50,10 +50,23 @@ class EgresadosController extends Controller
         ->where('users.id','=',auth()->user()->id)
         ->select('users.name as usuario','users.avatar','personas.nombre','personas.ap_materno',
         'personas.ap_paterno', 'paises.nombre as pais',
-        'personas.email','personas.fec_nacimiento','personas.est_civil','personas.sexo'
+        'personas.email','personas.sexo'
         ,'personas.dependiente','departamentos.nombre as departamentos','personas.id as persona_ID','users.id as user_ID','provincias.nombre as provincia', 'personas.dni'
         ,'egresados.codigo','egresados.celular','egresados.id')
         ->first();
         return response()->json($result);
     }
+
+    public function egresadosEscuelas(){
+        $result = User::join('personas', 'personaid', '=', 'personas.id')
+         ->join('egresados', 'egresados.persona_id', '=', 'personas.id')
+         ->join('egresado_escuelas', 'egresado_escuelas.egresado_id', '=', 'egresados.id')
+         ->join('escuela_profecionales', 'egresado_escuelas.escuela_profesiona_id', '=', 'escuela_profecionales.id')
+         ->join('facultades', 'escuela_profecionales.facultad_id', '=', 'facultades.id')
+         ->where('users.id','=',auth()->user()->id)
+         ->select('facultades.nombre as facultad','escuela_profecionales.nombre as escuela','egresado_escuelas.fecha_ingreso','egresado_escuelas.fecha_egreso',
+         'egresado_escuelas.descripcion')
+         ->get();
+         return response()->json($result);
+     }
 }

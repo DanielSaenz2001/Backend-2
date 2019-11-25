@@ -95,5 +95,13 @@ class PersonaController extends Controller
       {
             return response()->json($request->id);
       }
+
+     
+    }
+    
+    public function consultasPersonas(){
+        return response()->json([
+            'personas' => me()
+            ]);
     }
 }

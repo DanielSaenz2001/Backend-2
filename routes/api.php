@@ -97,4 +97,31 @@ Route::group([
       Route::put('capacitaciones/{id}', 'CapacitacionesController@update');
       Route::delete('capacitaciones/{id}', 'CapacitacionesController@destroy');
       //----------------------API-CAPACITACIONES--------------------\\
+
+      //----------------------API-ESCUELAEGRESADOS--------------------\\
+      Route::get('egresadoescuelas', 'EgresadoEscuelasController@index');
+      Route::get('egresadoescuelas/{id}', 'EgresadoEscuelasController@show');
+      Route::post('egresadoescuelas', 'EgresadoEscuelasController@create');
+      Route::put('egresadoescuelas/{id}', 'EgresadoEscuelasController@update');
+      Route::delete('egresadoescuelas/{id}', 'EgresadoEscuelasController@destroy');
+      //----------------------API-ESCUELAEGRESADOS--------------------\\
+
+      Route::get('egresadoescuelas2', 'EgresadosController@egresadosEscuelas');
+
+      //----------------------API-Formaciones--------------------\\
+      Route::get('formaciones', 'FormacionesController@index');
+      Route::get('formaciones/{id}', 'FormacionesController@show');
+      Route::post('formaciones', 'FormacionesController@create');
+      Route::put('formaciones/{id}', 'FormacionesController@update');
+      Route::delete('formaciones/{id}', 'FormacionesController@destroy');
+      //----------------------API-Formaciones--------------------\\
+
+       //----------------------API-Experiencia--------------------\\
+       Route::get('experiencias', 'ExperienciasLaboralesController@index');
+       Route::get('experiencias/{id}', 'ExperienciasLaboralesController@show');
+       Route::post('experiencias', 'ExperienciasLaboralesController@create');
+       Route::put('experiencias/{id}', 'ExperienciasLaboralesController@update');
+       Route::delete('experiencias/{id}', 'ExperienciasLaboralesController@destroy');
+       //----------------------API-Experiencia--------------------\\
+
 });

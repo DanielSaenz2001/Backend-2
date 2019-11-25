@@ -9,19 +9,25 @@ class EgresadoEscuelasController extends Controller
 {
     public function index()
     {
-        $empresas = EgresadoEscuelas::all(); 
-        return response()->json($empresas);
+        $egresadoescuelas = EgresadoEscuelas::all(); 
+        return response()->json($egresadoescuelas);
     }
 
     public function create(Request $request)
     {
-        EgresadoEscuelas::create($request-> all());
+        $egresadoEscuela = new EgresadoEscuelas();
+        $egresadoEscuela->fecha_ingreso = $request->fecha_ingreso;
+        $egresadoEscuela->fecha_egreso = $request->fecha_egreso;
+        $egresadoEscuela->descripcion = $request->descripcion;
+        $egresadoEscuela->escuela_profesiona_id = $request->escuela_profesiona_id;
+        $egresadoEscuela->egresado_id = $request->egresado_id;
+        $egresadoEscuela->save();
         return response()->json(['success'=> true]);
     }
     public function show($id)
     {
-        $empresas= EgresadoEscuelas::find($id);
-        return response()->json($empresas);
+        $egresadoescuelas= EgresadoEscuelas::find($id);
+        return response()->json($egresadoescuelas);
     }
     public function update(Request $request, $id)
     {

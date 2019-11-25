@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use App\Empresas;
 use Illuminate\Http\Request;
 
@@ -9,14 +9,27 @@ class EmpresasController extends Controller
 {
     public function index()
     {
-        $empresas = Empresas::all(); 
-        return response()->json($empresas);
+        $result = User::join('personas', 'personaid', '=', 'personas.id')
+        ->join('egresados', 'egresados.persona_id', '=', 'personas.id')
+        ->join('empresas', 'empresas.egresado', '=', 'egresados.id')
+        ->where('users.id','=',auth()->user()->id)
+        ->select('empresas.id','empresas.nombre','empresas.telefono','empresas.tipo','empresas.direccion','empresas.correo')
+        ->get();
+        return response()->json($result);
     }
 
     public function create(Request $request)
     {
-        Empresas::create($request-> all());
-        return response()->json(['success'=> true]);
+
+        $empresas = new Empresas();
+        $empresas->nombre = $request->nombre;
+        $empresas->telefono = $request->telefono;
+        $empresas->tipo = $request->tipo;
+        $empresas->direccion = $request->direccion;
+        $empresas->correo = $request->correo;
+        $empresas->egresado = $request->egresado;
+        $empresas->save();
+        return response()->json($empresas);
     }
     public function show($id)
     {
