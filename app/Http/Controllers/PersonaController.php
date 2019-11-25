@@ -99,9 +99,29 @@ class PersonaController extends Controller
      
     }
     
-    public function consultasPersonas(){
-        return response()->json([
-            'personas' => me()
-            ]);
+    public function usuarios()
+    {
+
+        $users = User::join('personas', 'personaid', '=', 'personas.id')
+        ->select('users.id','users.name as usuario','users.avatar','users.activo','users.email','users.rol',
+        'personas.ap_paterno','personas.dni','personas.nombre'
+        ,'personas.ap_materno')
+        ->get();
+
+        return response()->json($users);
+    }
+    public function usuariosAC(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->activo = $request->ac;
+        $user->save();
+        return response()->json($user);
+    }
+    public function usuariosROL(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->rol = $request->rol;
+        $user->save();
+        return response()->json($user);
     }
 }

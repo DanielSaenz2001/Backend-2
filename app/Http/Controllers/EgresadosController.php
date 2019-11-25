@@ -6,10 +6,16 @@ use App\Egresados;
 use Illuminate\Http\Request;
 
 class EgresadosController extends Controller
-{
+{ 
     public function index()
     {
-        $egresados = Egresados::all(); 
+        
+        $egresados = User::join('personas', 'personaid', '=', 'personas.id')
+        ->join('egresados', 'personas.id','=','egresados.persona_id')
+        ->select('users.email','personas.ap_paterno','personas.dni','personas.nombre'
+        ,'personas.ap_materno','egresados.codigo','egresados.celular','egresados.estado_actualizaciones','egresados.fech_actualizaciones')
+        ->get();
+
         return response()->json($egresados);
     }
 

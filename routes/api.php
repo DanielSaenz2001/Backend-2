@@ -130,5 +130,7 @@ Route::group([
         Route::put('history/{id}', 'DatosExperienciasLaboralesController@update');
         Route::delete('history/{id}', 'DatosExperienciasLaboralesController@destroy');
         //----------------------API-Datos-Experiencia--------------------\\
-
+        Route::get('personaUsuarios', 'PersonaController@usuarios');
+        Route::put('personaUsuarios/{id}', 'PersonaController@usuariosAC');
+        Route::put('personaUsuarioss/{id}', 'PersonaController@usuariosROL');
 });
