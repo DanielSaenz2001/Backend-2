@@ -17,7 +17,7 @@ class EgresadosController extends Controller
         ->join('paises', 'departamentos.pais_id', '=', 'paises.id')
         ->select('users.email','personas.ap_paterno','personas.dni','personas.nombre'
         ,'personas.ap_materno','egresados.codigo','egresados.celular','egresados.estado_actualizaciones','egresados.fec_actualizacion'
-        ,'paises.nombre as pais','departamentos.nombre as departamentos','provincias.nombre as provincia')
+        ,'paises.nombre as pais','departamentos.nombre as departamentos','provincias.nombre as provincia','egresados.id','users.id as userid')
         ->get();
 
         return response()->json($egresados);

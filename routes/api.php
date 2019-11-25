@@ -133,4 +133,9 @@ Route::group([
         Route::get('personaUsuarios', 'PersonaController@usuarios');
         Route::put('personaUsuarios/{id}', 'PersonaController@usuariosAC');
         Route::put('personaUsuarioss/{id}', 'PersonaController@usuariosROL');
+
+        /***************************admin********************************/
+        Route::get('adminpersona/{id}', 'AdminController@persona');
+        Route::get('admindependiente/{id}', 'AdminController@dependiente');
+        /****************************admin****************************** */
 });
