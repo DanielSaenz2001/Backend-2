@@ -14,6 +14,7 @@ class DatosExperienciasLaboralesController extends Controller
         $datos->descripccion = $request->descripccion;
         $datos->estado = $request->estado;
         $datos->cargo = $request->cargo;
+        $datos->fech_creacion = $request->fech_creacion;
         $datos->fech_inicio = $request->fech_inicio;
         $datos->fech_fin = $request->fech_fin;
         $datos->experiencia_laboral_id = $request->experiencia_laboral_id;
@@ -27,7 +28,7 @@ class DatosExperienciasLaboralesController extends Controller
         ->where('experiencias_laborales.id','=',$id)
         ->select('datos_experiencias_laborales.descripccion','datos_experiencias_laborales.estado',
         'datos_experiencias_laborales.cargo',
-        'datos_experiencias_laborales.fech_inicio','datos_experiencias_laborales.fech_fin')
+        'datos_experiencias_laborales.fech_inicio','datos_experiencias_laborales.fech_fin','datos_experiencias_laborales.fech_creacion')
         ->get();
         return response()->json($result);
     }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ExperienciasLaboralesController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $result = User::join('personas', 'personaid', '=', 'personas.id')
         ->join('egresados', 'egresados.persona_id', '=', 'personas.id')

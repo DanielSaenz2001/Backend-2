@@ -137,5 +137,14 @@ Route::group([
         /***************************admin********************************/
         Route::get('adminpersona/{id}', 'AdminController@persona');
         Route::get('admindependiente/{id}', 'AdminController@dependiente');
+        Route::get('adminegresado/{id}', 'AdminController@egresado');
+        Route::get('adminegresadoescuela/{id}', 'AdminController@egresadoescuela');
+        Route::get('adminformaciones/{id}', 'AdminController@formaciones');
+        Route::get('admincapacitaciones/{id}', 'AdminController@capacitaciones');
+        Route::get('adminempresas/{id}', 'AdminController@empresas');
+        Route::get('adminexperiencia/{id}', 'AdminController@experiencia');
         /****************************admin****************************** */
+
+        
+      Route::put('egresadosestado/{id}', 'EgresadosController@updateestado');
 });

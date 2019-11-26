@@ -9,8 +9,12 @@ class EscuelaProfecionalController extends Controller
 {
     public function index()
     {
-        $escuela_profesional = EscuelaProfecionales::all(); 
-        return response()->json($escuela_profesional);
+        
+        $egresados = EscuelaProfecionales::join('facultades', 'escuela_profecionales.facultad_id', '=', 'facultades.id')
+        ->select('facultades.nombre as facultad_id','escuela_profecionales.nombre','escuela_profecionales.estado_acreditacion','escuela_profecionales.id')
+        ->get();
+
+        return response()->json($egresados);
     }
 
     public function create(Request $request)

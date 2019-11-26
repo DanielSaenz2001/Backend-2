@@ -46,6 +46,15 @@ class EgresadosController extends Controller
     {
         Egresados::findOrFail($id)->update($request->all());
         return response()->json($request->all());
+    } 
+    public function updateestado(Request $request, $id)
+    {
+        
+        $egresados = Egresados::findOrFail($id);
+        $egresados->fec_actualizacion = $request->fec_actualizacion;
+        $egresados->estado_actualizaciones = $request->estado_actualizaciones;
+        $egresados->save();
+        return response()->json($egresados);
     }
     public function destroy($id)
     {
