@@ -74,10 +74,11 @@ Route::group([
 
      //----------------------API-SUGERECIAS----------------------\\
      Route::get('sugerencias', 'SugerenciasControler@index');
+     Route::get('sugerencias2', 'SugerenciasControler@index2');
      Route::get('sugerencias/{id}', 'SugerenciasControler@show');
      Route::post('sugerencias', 'SugerenciasControler@create');
      Route::put('sugerencias/{id}', 'SugerenciasControler@updateComentario');
-     //Route::put('sugerencias/{id}', 'SugerenciasControler@updateAdmin');
+     Route::put('sugerencias2/{id}', 'SugerenciasControler@updateAdmin');
      Route::delete('sugerencias/{id}', 'SugerenciasControler@destroy');
       //----------------------/API-SUGERECIAS----------------------\\
 
@@ -100,13 +101,14 @@ Route::group([
 
       //----------------------API-ESCUELAEGRESADOS--------------------\\
       Route::get('egresadoescuelas', 'EgresadoEscuelasController@index');
+      Route::get('egresadoescuelas2', 'EgresadosController@egresadosEscuelas');
       Route::get('egresadoescuelas/{id}', 'EgresadoEscuelasController@show');
       Route::post('egresadoescuelas', 'EgresadoEscuelasController@create');
       Route::put('egresadoescuelas/{id}', 'EgresadoEscuelasController@update');
       Route::delete('egresadoescuelas/{id}', 'EgresadoEscuelasController@destroy');
       //----------------------API-ESCUELAEGRESADOS--------------------\\
 
-      Route::get('egresadoescuelas2', 'EgresadosController@egresadosEscuelas');
+      Route::get('escuela2', 'EscuelaProfecionalController@index2');
 
       //----------------------API-Formaciones--------------------\\
       Route::get('formaciones', 'FormacionesController@index');

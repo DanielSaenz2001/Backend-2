@@ -16,6 +16,12 @@ class EscuelaProfecionalController extends Controller
 
         return response()->json($egresados);
     }
+    public function index2()
+    {
+
+        $escuela = EscuelaProfecionales::all(); 
+        return response()->json($escuela);
+    }
 
     public function create(Request $request)
     {

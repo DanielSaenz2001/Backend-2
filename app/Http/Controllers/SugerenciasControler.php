@@ -13,6 +13,16 @@ class SugerenciasControler extends Controller
         $sugerencias = Sugerencias::all(); 
         return response()->json($sugerencias);
     }
+    public function index2()
+    {
+
+        $sugerencias = Sugerencias::where('comentario_respuesta','=',null)
+
+        ->select('sugerencias.id','sugerencias.tipo_comentario','sugerencias.comentario_egresado','sugerencias.fecha_creacion')
+        ->orderBy('sugerencias.fecha_creacion','desc')
+        ->get();
+        return response()->json($sugerencias);
+    }
 
     public function create(Request $request)
     {
