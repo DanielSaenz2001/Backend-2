@@ -144,8 +144,9 @@ class AdminController extends Controller
         'experiencias_laborales.descripcion_val','empresas.nombre as empresa')
         ->get();
         return response()->json($result);
-    }else{
-        return response()->json($id);
+        }else{
+            return response()->json($id);
+        }
     }
-    }
+    
 }

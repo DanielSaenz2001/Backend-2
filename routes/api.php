@@ -80,9 +80,10 @@ Route::group([
      Route::put('sugerencias2/{id}', 'SugerenciasControler@updateAdmin');
      Route::delete('sugerencias/{id}', 'SugerenciasControler@destroy');
       //----------------------/API-SUGERECIAS----------------------\\
-
+      
       //----------------------/API-EGRESADOS----------------------\\
       Route::get('egresados', 'EgresadosController@index');
+      Route::put('egresadosbuscar', 'EgresadosController@buscar');
       Route::get('egresados/{id}', 'EgresadosController@show');
       Route::post('egresados', 'EgresadosController@create');
       Route::put('egresados/{id}', 'EgresadosController@update');

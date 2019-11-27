@@ -10,7 +10,13 @@ class SugerenciasControler extends Controller
     
     public function index()
     {
-        $sugerencias = Sugerencias::all(); 
+        
+        $sugerencias = Sugerencias::join('users', 'user_creador', '=', 'users.id')
+        ->join('personas','personas.id','=','users.personaid')
+        ->select('personas.nombre','sugerencias.id','sugerencias.comentario_egresado','sugerencias.fecha_creacion','sugerencias.tipo_comentario'
+        ,'sugerencias.comentario_respuesta','sugerencias.fecha_atencion')
+        ->get();
+
         return response()->json($sugerencias);
     }
     public function index2()

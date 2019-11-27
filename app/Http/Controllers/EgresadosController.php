@@ -44,8 +44,13 @@ class EgresadosController extends Controller
     }
     public function update(Request $request, $id)
     {
-        Egresados::findOrFail($id)->update($request->all());
-        return response()->json($request->all());
+        $egresados = Egresados::findOrFail($id);
+        $egresados->celular = $request->celular;
+        $egresados->domicilio_actual = $request->domicilio_actual;
+        $egresados->pais = $request->pais;
+        $egresados->departamento = $request->departamento;
+        $egresados->save();
+        return response()->json($egresados);
     } 
     public function updateestado(Request $request, $id)
     {
@@ -88,4 +93,64 @@ class EgresadosController extends Controller
          ->get();
          return response()->json($result);
      }
+     public function buscar(Request $request)
+    {
+        if($request->codigo == null && $request->estado == null){
+            $egresados = User::join('personas', 'personaid', '=', 'personas.id')
+            ->join('egresados', 'personas.id','=','egresados.persona_id')
+            ->join('provincias', 'egresados.domicilio_actual', '=', 'provincias.id')
+            ->join('departamentos', 'provincias.dep_id', '=', 'departamentos.id')
+            ->join('paises', 'departamentos.pais_id', '=', 'paises.id')
+            ->select('users.email','personas.ap_paterno','personas.dni','personas.nombre'
+            ,'personas.ap_materno','egresados.codigo','egresados.celular','egresados.estado_actualizaciones','egresados.fec_actualizacion'
+            ,'paises.nombre as pais','departamentos.nombre as departamentos','provincias.nombre as provincia','egresados.id','users.id as userid')
+            ->get();
+            return response()->json($egresados);
+          }
+          if($request->codigo == !null && $request->estado == null){
+            $egresados = User::join('personas', 'personaid', '=', 'personas.id')
+            ->join('egresados', 'personas.id','=','egresados.persona_id')
+            ->join('provincias', 'egresados.domicilio_actual', '=', 'provincias.id')
+            ->join('departamentos', 'provincias.dep_id', '=', 'departamentos.id')
+            ->join('paises', 'departamentos.pais_id', '=', 'paises.id')
+            ->where('egresados.codigo','=',$request->codigo)
+            ->select('users.email','personas.ap_paterno','personas.dni','personas.nombre'
+            ,'personas.ap_materno','egresados.codigo','egresados.celular','egresados.estado_actualizaciones','egresados.fec_actualizacion'
+            ,'paises.nombre as pais','departamentos.nombre as departamentos','provincias.nombre as provincia','egresados.id','users.id as userid')
+            ->get();
+            return response()->json($egresados);
+    
+          }
+          if($request->codigo == null && $request->estado == !null){
+            $egresados = User::join('personas', 'personaid', '=', 'personas.id')
+            ->join('egresados', 'personas.id','=','egresados.persona_id')
+            ->join('provincias', 'egresados.domicilio_actual', '=', 'provincias.id')
+            ->join('departamentos', 'provincias.dep_id', '=', 'departamentos.id')
+            ->join('paises', 'departamentos.pais_id', '=', 'paises.id')
+            ->where('egresados.estado_actualizaciones','=',$request->estado)
+            ->select('users.email','personas.ap_paterno','personas.dni','personas.nombre'
+            ,'personas.ap_materno','egresados.codigo','egresados.celular','egresados.estado_actualizaciones','egresados.fec_actualizacion'
+            ,'paises.nombre as pais','departamentos.nombre as departamentos','provincias.nombre as provincia','egresados.id','users.id as userid')
+            ->get();
+            return response()->json($egresados);
+    
+          }
+          if($request->codigo == !null && $request->estado == !null){
+            $egresados = User::join('personas', 'personaid', '=', 'personas.id')
+            ->join('egresados', 'personas.id','=','egresados.persona_id')
+            ->join('provincias', 'egresados.domicilio_actual', '=', 'provincias.id')
+            ->join('departamentos', 'provincias.dep_id', '=', 'departamentos.id')
+            ->join('paises', 'departamentos.pais_id', '=', 'paises.id')
+            ->where('egresados.estado','=',)
+            ->where([
+                ['egresados.estado_actualizaciones', '=', $request->estado],
+                ['egresados.codigo', '=', $request->codigo],
+            ])
+            ->select('users.email','personas.ap_paterno','personas.dni','personas.nombre'
+            ,'personas.ap_materno','egresados.codigo','egresados.celular','egresados.estado_actualizaciones','egresados.fec_actualizacion'
+            ,'paises.nombre as pais','departamentos.nombre as departamentos','provincias.nombre as provincia','egresados.id','users.id as userid')
+            ->get();
+            return response()->json($egresados);
+          }
+    }
 }
