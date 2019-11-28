@@ -159,7 +159,7 @@ Route::group([
       Route::delete('catalogo/{id}', 'CatalogoController@destroy');
        /****************catalogo****************** */
 
-        /****************imagen****************** */
+        /****************imagen*******************/
         Route::get('imagen', 'ImagenController@index');
         Route::get('imagen/{id}', 'ImagenController@show');
         Route::post('imagen', 'ImagenController@create');
