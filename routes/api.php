@@ -149,4 +149,22 @@ Route::group([
 
         
       Route::put('egresadosestado/{id}', 'EgresadosController@updateestado');
+
+
+    /****************catalogo****************** */
+      Route::get('catalogo', 'CatalogoController@index');
+      Route::get('catalogo/{id}', 'CatalogoController@show');
+      Route::post('catalogo', 'CatalogoController@create');
+      Route::put('catalogo/{id}', 'CatalogoController@update');
+      Route::delete('catalogo/{id}', 'CatalogoController@destroy');
+       /****************catalogo****************** */
+
+        /****************imagen****************** */
+        Route::get('imagen', 'ImagenController@index');
+        Route::get('imagen/{id}', 'ImagenController@show');
+        Route::post('imagen', 'ImagenController@create');
+        Route::put('imagen/{id}', 'ImagenController@update');
+        Route::delete('imagen/{id}', 'ImagenController@destroy');
+         /****************imagen****************** */
 });
+
